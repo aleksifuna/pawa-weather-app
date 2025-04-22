@@ -15,7 +15,7 @@ export const ForecastCard: React.FC<{ item: ForecastData }> = ({ item }) => {
     return `${day} ${month}`;
   }
   return (
-    <div className="max-w-sm bg-gray-700 rounded-2xl shadow-md p-6 text-center space-y-4">
+    <div className=" bg-gray-700 rounded-2xl shadow-md p-6 text-center space-y-4">
       <div className=" text-white">{formatDate(item.dt)}</div>
       <img
         className="mx-auto w-24 h-24"

@@ -2,6 +2,7 @@ import CurrentWeather from "./CurrentWeather";
 import { DateLocation } from "./DateLocation";
 import { Forecast } from "./Forecast";
 import { SearchBar } from "./SearchBar";
+import { WindHumidity } from "./WindHumidity";
 
 export default function Home() {
   const data = {
@@ -27,6 +28,7 @@ export default function Home() {
       <div className="col-span-3 flex flex-col justify-around bg-gray-900 p-2">
         <SearchBar />
         <Forecast />
+        <WindHumidity />
       </div>
     </div>
   );

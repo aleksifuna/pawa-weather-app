@@ -8,7 +8,7 @@ export const Forecast = () => {
     { dt: 1745571600, icon: "04n", min: 16.64, max: 20.64 },
   ];
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-4 w-full">
       {data.map((item, index) => (
         <ForecastCard key={index} item={item} />
       ))}
