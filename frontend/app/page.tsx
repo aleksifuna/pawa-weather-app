@@ -1,5 +1,6 @@
 import CurrentWeather from "./CurrentWeather";
 import { DateLocation } from "./DateLocation";
+import { SearchBar } from "./SearchBar";
 
 export default function Home() {
   const data = {
@@ -13,8 +14,8 @@ export default function Home() {
   };
 
   return (
-    <div className="grid grid-cols-4 max-w-[screen] h-screen bg-gray-950 text-white p-0.5">
-      <div className="col-span-1 flex flex-col justify-around bg-gray-800">
+    <div className="grid grid-cols-4 gap-x-2 max-w-[screen] h-screen bg-gray-950 text-white p-0.5">
+      <div className="col-span-1 flex flex-col justify-around bg-gray-900">
         <div>
           <CurrentWeather data={data} />
         </div>
@@ -22,7 +23,9 @@ export default function Home() {
           <DateLocation data={data} />
         </div>
       </div>
-      <div className="col-span-3">Right</div>
+      <div className="col-span-3 flex flex-col justify-around bg-gray-900 p-2">
+        <SearchBar />
+      </div>
     </div>
   );
 }
