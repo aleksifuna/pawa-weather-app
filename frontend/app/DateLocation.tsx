@@ -36,7 +36,7 @@ export const DateLocation: React.FC<{ data: WeatherData }> = ({ data }) => {
     );
   }
   return (
-    <div className="max-w-sm mx-auto bg-gray-700 rounded-2xl shadow-md p-6 text-center space-y-4">
+    <div className="max-w-sm mx-auto rounded-2xl shadow-md p-6 text-center space-y-4">
       <div>{formatDate(data.dt)}</div>
       <div className="font-bold text-white">{data.location}</div>
     </div>

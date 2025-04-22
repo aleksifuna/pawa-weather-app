@@ -16,8 +16,8 @@ export default function Home() {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-x-2 max-w-[screen] h-screen bg-gray-950 text-white p-0.5">
-      <div className="col-span-1 flex flex-col justify-around bg-gray-900">
+    <div className="grid grid-cols-4 gap-x-1 max-w-[screen] h-screen bg-gray-950 text-white p-0.5">
+      <div className="col-span-1 flex flex-col justify-evenly bg-gray-900">
         <div>
           <CurrentWeather data={data} />
         </div>
@@ -25,7 +25,7 @@ export default function Home() {
           <DateLocation data={data} />
         </div>
       </div>
-      <div className="col-span-3 flex flex-col justify-around bg-gray-900 p-2">
+      <div className="col-span-3 flex flex-col justify-evenly bg-gray-900 p-2">
         <SearchBar />
         <Forecast />
         <WindHumidity />
