@@ -1,19 +1,19 @@
-'use client';
+"use client";
 import React from "react";
 import { ForecastCard } from "./ForecastCard";
 
-interface ForecastItem  {
+interface ForecastItem {
   dt: number;
   icon: string;
   min: number;
   max: number;
-};
+  unit: string;
+}
 
 interface ForecastProps {
-  data: ForecastItem[]
+  data: ForecastItem[];
 }
-export const Forecast: React.FC<ForecastProps> = ({data}) => {
-
+export const Forecast: React.FC<ForecastProps> = ({ data }) => {
   return (
     <div className="grid grid-cols-3 gap-4 w-full">
       {data.map((item, index) => (

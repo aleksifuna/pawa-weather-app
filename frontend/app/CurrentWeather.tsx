@@ -4,6 +4,7 @@ interface WeatherData {
   icon: string;
   description: string;
   temperature: number;
+  unit: string;
 }
 
 const CurrentWeather: React.FC<{ data: WeatherData }> = ({ data }) => {
@@ -15,7 +16,7 @@ const CurrentWeather: React.FC<{ data: WeatherData }> = ({ data }) => {
         alt={data.description}
       />
       <div className="text-5xl font-bold text-white">
-        {Math.round(data.temperature)}°C
+        {Math.round(data.temperature)}°{data.unit}
       </div>
       <div className="capitalize text-white text-lg">{data.description}</div>
     </div>

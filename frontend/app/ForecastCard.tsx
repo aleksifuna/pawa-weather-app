@@ -5,6 +5,7 @@ interface ForecastData {
   icon: string;
   min: number;
   max: number;
+  unit: string;
 }
 export const ForecastCard: React.FC<{ item: ForecastData }> = ({ item }) => {
   function formatDate(dateString: number) {
@@ -22,7 +23,7 @@ export const ForecastCard: React.FC<{ item: ForecastData }> = ({ item }) => {
         src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
       />
       <div className=" text-white">
-        {Math.round(item.min)}°C - {Math.round(item.max)}°C
+        {Math.round(item.min)}°C - {Math.round(item.max)}°{item.unit}
       </div>
     </div>
   );
