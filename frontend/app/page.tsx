@@ -56,7 +56,7 @@ const fetchWeatherData = async (location: String) => {
       <div className="col-span-3 flex flex-col justify-evenly bg-gray-900 p-2">
         <SearchBar onSearch={fetchWeatherData}/>
         <Forecast />
-        <WindHumidity />
+        <WindHumidity data={weatherData}/>
       </div>
     </div>
   );
