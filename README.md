@@ -27,3 +27,34 @@ Pawa Weather App provides users with accurate weather information including curr
 - Laravel (latest version)
 - API-only implementation (no Blade views)
 - Integration with OpenWeatherMap API
+
+## Installation and Setup
+
+### Prerequisites
+
+- Docker and Docker Compose
+- OpenWeatherMap API key
+
+### Installation Steps
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/aleksifuna/pawa-weather-app.git
+cd pawa-weather-app
+```
+
+2. Create a .env file in the root directory with your OpenWeatherMap API key:
+
+```bash
+OPENWEATHER_API_KEY=your_api_key_here
+```
+
+3. Start the application using Docker Compose:
+
+```bash
+docker compose up
+```
+
+4. Once the containers are up and running, the application will be available at:
+   `http://localhost:3000`
