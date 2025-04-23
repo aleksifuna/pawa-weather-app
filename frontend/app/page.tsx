@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CurrentWeather from "./CurrentWeather";
 import { DateLocation } from "./DateLocation";
 import { Forecast } from "./Forecast";
@@ -14,19 +14,31 @@ type ForecastItem = {
   max: number;
   unit: string;
 };
+type WeatherData = {
+  location: string;
+  temperature: number;
+  icon: string;
+  description: string;
+  wind_status: number;
+  humidity: number;
+  dt: number;
+  unit: string;
+};
 
 export default function Home() {
-  const [weatherData, setWeatherData] = useState({
-    location: "Nairobi",
-    temperature: 16.64,
-    icon: "04n",
-    description: "overcast clouds",
-    wind_status: 2.27,
-    humidity: 93,
-    dt: 1745354572,
+  const [weatherData, setWeatherData] = useState<WeatherData>({
+    location: "",
+    temperature: 0,
+    icon: "",
+    description: "",
+    wind_status: 0,
+    humidity: 0,
+    dt: 0,
     unit: "C",
   });
+
   const [forecast, setForecast] = useState<ForecastItem[]>([]);
+
   const fetchWeatherData = async (location: String) => {
     setForecast([]);
 
@@ -105,6 +117,9 @@ export default function Home() {
       );
     }
   };
+  useEffect(() => {
+    fetchWeatherData("Nairobi");
+  }, []);
 
   return (
     <div className="grid grid-cols-4 gap-x-1 max-w-[screen] h-screen bg-gray-950 text-white p-0.5">
