@@ -44,10 +44,10 @@ export default function Home() {
 
     try {
       const currentWeatherResponse = await fetch(
-        `http://127.0.0.1:8001/api/weather/${location}`
+        `http://127.0.0.1:8000/api/weather/${location}`
       );
       const forecastResponse = await fetch(
-        `http://127.0.0.1:8001/api/forecast/${location}`
+        `http://127.0.0.1:8000/api/forecast/${location}`
       );
       if (!currentWeatherResponse.ok || !forecastResponse.ok) {
         throw new Error("Could not fetch weather data");
@@ -122,7 +122,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-cols-4 gap-x-1 max-w-[screen] h-screen bg-gray-950 text-white p-0.5">
+    <div className="md:grid grid-cols-4 gap-x-1 max-w-[screen] h-screen bg-gray-950 text-white p-0.5">
       <div className="col-span-1 flex flex-col justify-evenly bg-gray-900">
         <div>
           <CurrentWeather data={weatherData} />
