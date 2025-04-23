@@ -6,6 +6,13 @@ import { Forecast } from "./Forecast";
 import { SearchBar } from "./SearchBar";
 import { WindHumidity } from "./WindHumidity";
 
+type ForecastItem = {
+  dt: number;
+  icon: string;
+  min: number;
+  max: number;
+};
+
 export default function Home() {
 const [weatherData, setWeatherData] = useState({
   location: "Nairobi",
@@ -16,19 +23,30 @@ const [weatherData, setWeatherData] = useState({
   humidity: 93,
   dt: 1745354572,
 });
-
+const [forecast, setForecast] = useState<ForecastItem[]>([])
 const fetchWeatherData = async (location: String) => {
+  setForecast([])
   
   try {
-    const response = await fetch(
+    const currentWeatherResponse = await fetch(
       `http://127.0.0.1:8000/api/weather/${location}`
     );
-    
-    if (!response.ok) {
+    const forecastResponse = await fetch(`http://127.0.0.1:8000/api/forecast/${location}`);
+    if (!currentWeatherResponse.ok || !forecastResponse.ok) {
       throw new Error("Could not fetch weather data");
     }
     
-    const data = await response.json();
+    const data = await currentWeatherResponse.json();
+    const forecastDataRaw = await forecastResponse.json();
+    const forecastData = forecastDataRaw.slice(1,4)
+    const filtredForecastData = forecastData.map((item: { dt: number; weather: [{ icon: string; }]; temp: { min: number; max: number; }; }) => ({
+      dt: item.dt,
+      icon: item.weather[0].icon,
+      min: item.temp.min,
+      max: item.temp.max
+    }));
+
+
     setWeatherData({
       location: data.location,
       temperature: data.temperature,
@@ -38,6 +56,7 @@ const fetchWeatherData = async (location: String) => {
       humidity: data.humidity,
       dt: data.dt,
     });
+    setForecast(prev => [...prev, ...filtredForecastData])
   } catch (err) {
     throw new Error("Could not fetch weather data");
   }
@@ -55,7 +74,7 @@ const fetchWeatherData = async (location: String) => {
       </div>
       <div className="col-span-3 flex flex-col justify-evenly bg-gray-900 p-2">
         <SearchBar onSearch={fetchWeatherData}/>
-        <Forecast />
+        <Forecast data={forecast}/>
         <WindHumidity data={weatherData}/>
       </div>
     </div>
