@@ -1,7 +1,7 @@
 # Pawa Weather App
 
 A modern weather application built with a decoupled architecture, featuring a NextJS frontend and Laravel backend.
-
+![Image](https://github.com/user-attachments/assets/b2f29ad4-44e2-4c0f-a800-0d185c01b0f0)
 ## Overview
 
 Pawa Weather App provides users with accurate weather information including current conditions and 3-day forecasts. The application uses the OpenWeatherMap API to fetch real-time weather data.
